@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"></import>
+        <import type="com.munjzservice.utility.StringUtility"/>
+
+        <variable
+            name="activeItemVM"
+            type="com.munjzservice.tab.active.viewmodel.ActiveItemVM"></variable>
+
+        <variable
+            name="serviceRequest"
+            type="com.munjzservice.tab.active.model.ServiceRequest"></variable>
+
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        card_view:cardCornerRadius="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="@dimen/card_item_left_margin"
+                android:layout_marginRight="@dimen/card_item_left_margin">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/price"
+                    android:ellipsize="end"
+                    android:text="@{serviceRequest.title}"
+                    android:textColor="@color/font_color1"
+                    android:textSize="@dimen/fifteen_sp"
+                    app:font="@{@string/san_francisco_text_medium}" />
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="@{serviceRequest.total_price}"
+                    android:textColor="@color/font_color1"
+                    android:textSize="@dimen/fifteen_sp"
+                    app:font="@{@string/san_francisco_text_medium}" />
+                <TextView
+                    android:clickable="true"
+                    android:onClick="@{(v) -> activeItemVM.onClickLocation(v,serviceRequest)}"
+                    android:layout_marginTop="7dp"
+                    android:layout_below="@+id/title"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textSize="@dimen/thirteen_sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{serviceRequest.teams_appointment_location}"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@drawable/ic_location"
+                    android:textColor="@color/font_color4"
+                    app:font="@{@string/san_francisco_text_medium}" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line"></View>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/card_item_left_margin"
+                android:layout_marginRight="@dimen/card_item_left_margin"
+                android:layout_marginTop="10dp"
+                android:clickable="true"
+                android:onClick="@{(v) -> activeItemVM.onClickRequestDetail(v,serviceRequest)}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:text="@string/requested_details"
+                    android:textColor="@color/font_color1"
+                    android:textSize="@dimen/fifteen_sp"
+                    app:font="@{@string/san_francisco_text_medium}" />
+
+                <TextView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignParentLeft="true"
+                    android:background="@{serviceRequest.showDetail?@drawable/ic_arrow_angle_down:@drawable/ic_right_arrow_angle}" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/card_item_left_margin"
+                android:layout_marginRight="@dimen/card_item_left_margin"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:visibility="@{serviceRequest.showDetail?View.VISIBLE:View.GONE}">
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/card_item_label_width"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@string/customer"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@{serviceRequest.contact_name}"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/card_item_label_width"
+
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@string/service_id"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@{serviceRequest.serviceid}"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/card_item_label_width"
+
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@string/region"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@{serviceRequest.region}"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="@dimen/card_item_label_width"
+
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@string/contact_number"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@{serviceRequest.contactnumber}"
+                        android:onClick="@{(v) -> activeItemVM.onClickPhoneNumber(v,serviceRequest)}"
+                        android:textColor="@color/font_color2"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/card_item_label_width"
+
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@string/date"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@{serviceRequest.date}"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/card_item_label_width"
+
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@string/start_time"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@{serviceRequest.starttime}"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/card_item_label_width"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@string/end_date"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@{StringUtility.getDate(serviceRequest.team_appointment_end_time)}"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/card_item_label_width"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@string/end_time"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@{StringUtility.getTime(serviceRequest.team_appointment_end_time)}"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/card_item_label_width"
+
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@string/grand_total"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@{serviceRequest.total_price}"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/card_item_label_width"
+
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@string/status"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@{serviceRequest.status}"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/card_item_label_width"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@string/location"
+                        android:textAllCaps="false"
+                        android:textSize="@dimen/fourteen_sp"
+                        android:textColor="@color/font_color1"
+                        app:font="@{@string/san_francisco_text_medium}"/>
+
+                    <TextView
+                        android:clickable="true"
+                        android:onClick="@{(v) -> activeItemVM.onClickLocation(v,serviceRequest)}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/fourteen_sp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/font_color2"
+                        android:text="@string/view"
+                        app:font="@{@string/san_francisco_text_medium}"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:visibility="@{serviceRequest.isdataservice==1?View.VISIBLE:View.GONE}"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/card_item_label_width"
+                        android:layout_height="wrap_content"
+                        android:text="@string/summary"
+                        android:layout_marginRight="5dp"
+                        android:textColor="@color/font_color1"
+                        android:textAllCaps="false"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}"/>
+
+                    <TextView
+                        android:clickable="true"
+                        android:onClick="@{(v) -> activeItemVM.onClickSummary(v,serviceRequest)}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/summary_view"
+                        android:textSize="@dimen/fourteen_sp"
+                        android:textColor="@color/font_color2"
+                        app:font="@{@string/san_francisco_text_medium}"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:visibility="@{serviceRequest.additional_service.size()==0?View.GONE:View.VISIBLE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="@dimen/card_item_label_width"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@string/additional_service_s"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@{StringUtility.additionalService(serviceRequest.additional_service)}"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+                </LinearLayout>
+                <LinearLayout
+                    android:visibility="@{serviceRequest.isdataservice==0?View.VISIBLE:View.GONE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="@dimen/card_item_label_width"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@string/description"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@{serviceRequest.comments}"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+                </LinearLayout>
+                <LinearLayout
+                    android:visibility="@{serviceRequest.isdataservice==0?View.VISIBLE:View.GONE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/card_item_label_width"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@string/images"
+                        android:textColor="@color/font_color1"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+
+                    <TextView
+                        android:clickable="true"
+                        android:onClick="@{(v) -> activeItemVM.onClickImageView(v,serviceRequest)}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/fourteen_sp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/font_color2"
+                        android:text="@string/view"
+                        app:font="@{@string/san_francisco_text_medium}"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        <!--    <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="@dimen/card_item_left_margin"
+                android:layout_marginRight="@dimen/card_item_left_margin"
+                android:layout_marginTop="10dp"
+                android:clickable="true"
+                android:onClick="@{(v) -> activeItemVM.onClickEdit(v,serviceRequest)}">
+
+                <TextView
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="5dp"
+                    android:text="@string/edit"
+                    android:textColor="@color/font_color1"
+                    android:textSize="@dimen/fourteen_sp"
+                    app:font="@{@string/san_francisco_text_medium}" />
+
+                <TextView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/ic_right_arrow_angle"
+                    android:textSize="@dimen/fourteen_sp" />
+            </RelativeLayout>-->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/line"></View>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/card_bottom_bar_color">
+
+                <RelativeLayout
+                    android:clickable="true"
+                    android:onClick="@{(v) -> activeItemVM.onClickAccept(v,serviceRequest)}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/card_item_left_margin"
+                    android:layout_marginRight="@dimen/card_item_left_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:text="@string/accept"
+                        android:textColor="@color/font_color2"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+
+                    <TextView
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="5dp"
+                        android:clickable="true"
+                        android:onClick="@{(v) -> activeItemVM.onClickCancel(v,serviceRequest)}"
+                        android:text="@string/cancel"
+                        android:textColor="@color/font_color2"
+                        android:textSize="@dimen/fourteen_sp"
+                        app:font="@{@string/san_francisco_text_medium}" />
+
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</layout>

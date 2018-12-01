@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+   <!--<string name="base_url">http://temp.kendev.xyz/serviceappnew/public/api/v2/</string>-->
+   <string name="base_url">https://munjz.net/api/v2/</string>
+   <string name="forgot_password_url">https://munjz.net/password/reset</string>
+
+</resources>

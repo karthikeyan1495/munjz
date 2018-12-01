@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"></import>
+
+        <variable
+            name="shareAdditionalServiceItemVM"
+            type="com.munjzservice.share.viewmodel.ShareAdditionalServiceItemVM" />
+
+        <variable
+            name="additionalService"
+            type="com.munjzservice.tab.active.model.AdditionalService" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="@{additionalService.service_name}"
+                android:textColor="@color/font_color1"
+                android:textSize="@dimen/fourteen_sp"
+                app:font="@{@string/san_francisco_text_medium}" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{additionalService.price}"
+                android:textColor="@color/font_color1"
+                android:textSize="@dimen/fourteen_sp"
+                app:font="@{@string/san_francisco_text_medium}" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</layout>

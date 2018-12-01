@@ -1,0 +1,138 @@
+<resources>
+    <string name="app_name">SPmunjz</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+    <string name="welcome_to_munjz">ياهلا فيكم بتطبيق منجز</string>
+    <string name="login_screen_messaage">التطبيق الرائد في صيانة البيوت والمنشئات</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="password">الرقم السري</string>
+    <string name="signin">تسجيل دخول</string>
+    <string name="forgot_password">هل نسيت الرقم السري؟</string>
+
+    <string name="logout">تسجيل خروج</string>
+    <string name="active">تحت الطلب</string>
+    <string name="accepted">الطلبات المؤكدة</string>
+    <string name="history">الطلبات السابقة</string>
+    <string name="requested_details">تفاصيل الخدمة</string>
+    <string name="sar">SAR</string>
+
+    <string name="customer">عميل:</string>
+    <string name="service_id">رقم الخدمة:</string>
+    <string name="region">المنطقة:</string>
+    <string name="contact_number">رقم التواصل:</string>
+    <string name="date">تاريخ البدء:</string>
+    <string name="start_time">وقت بداية الخدمة:</string>
+    <string name="grand_total">المبلغ الإجمالي:</string>
+    <string name="status">حالة الطلب:</string>
+    <string name="status1">حالة الطلب - &#160;</string>
+
+    <string name="edit">تعديل</string>
+    <string name="accept">قبول الطلب</string>
+    <string name="profile">صفحة المستخدم</string>
+    <string name="email_address">البريد الإلكتروني:</string>
+    <string name="services">الخدمة:</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا </string>
+    <string name="save">حفظ</string>
+
+    <string name="requested_location">الموقع المطلوب</string>
+    <string name="location">الموقع:</string>
+    <string name="view">عرض الموقع</string>
+
+
+    <string name="service_request">طلب الخدمة</string>
+    <string name="location_caps">الموقع</string>
+
+
+    <string name="cancel_alert">هل آنت متأكد من الإلغاء؟</string>
+
+    <string name="logout_alert">هل انت متأكد من تسجيل الخروج</string>
+    <string name="email_error">الرجاء إدخال الأيميل الصحيح</string>
+    <string name="password_error">الرجاء إدخال الرقم السري الصحيح</string>
+    <string name="something_went_wrong">حدث هناك خطأ، الرجاء المحاولة مره آخرى</string>
+    <string name="no_internet">الرجاء التأكد من أتصال الأنترنت</string>
+    <string name="no_data">لا توجد معلومات</string>
+
+    <string name="in_progress">تحت التنفيذ</string>
+
+    <string name="request">طلب خدمة</string>
+    <string name="inprogress">تحت التنفيذ</string>
+    <string name="confirm">تم التأكيد</string>
+    <string name="complete">تم الإنتهاء من الخدمة</string>
+    <string name="cancel">إلغاء</string>
+
+    <string name="settings">إعدادات</string>
+    <string name="language">لغة</string>
+    <string name="english">الإنجليزية</string>
+    <string name="arabic">عربى</string>
+
+
+    <string name="end_date">تاريخ البدء:</string>
+    <string name="end_time">وقت النهاية:</string>
+
+
+    <string name="additional_service">خدمة اضافية</string>
+    <string name="service_name">اسم الخدمة</string>
+    <string name="price">السعر</string>
+    <string name="share">شارك</string>
+
+
+    <string name="user_details">بيانات المستخدم</string>
+    <string name="total_due">الاجمالي المستحق</string>
+    <string name="send">إرسال</string>
+    <string name="email_comma_separated">تم فصل فاصلة البريد الإلكتروني</string>
+    <string name="comments">تعليقات</string>
+
+    <string name="balance">المحفظة</string>
+    <string name="advance_amount">المبلغ المدفوع من قبل المزود:</string>
+    <string name="balance_amount">المحفظة:</string>
+    <string name="complete_count">عدد الخدمات:</string>
+    <string name="additional_service_empty">الرجاء إدخال اسم خدمة وسعر صالحين</string>
+
+    <string name="notes">ملاحظة: الحد الأدنى لطلب الخدمة هو 50 ريال</string>
+
+
+    <string name="description">وصف:</string>
+    <string name="images">صورة (صور):</string>
+    <string name="additional_service_s">خدمات إضافية):</string>
+    <string name="image_view">عرض الصورة</string>
+    <string name="no_image">لا توجد صور متاحة</string>
+
+    <string name="requested_summary">الملخص المطلوب</string>
+    <string name="summary">ملخص الطلب</string>
+    <string name="summary_view">عرض تفاصيل الطلب</string>
+
+    <string-array name="status_array">
+        <item>@string/request</item>
+        <item>@string/inprogress</item>
+        <item>@string/confirm</item>
+        <item>@string/complete</item>
+        <!--<item>@string/cancel</item>-->
+    </string-array>
+
+    <string-array name="status_array_key">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <!--<item>4</item>-->
+    </string-array>
+
+    <string-array name="language_array">
+        <item>@string/english</item>
+        <item>@string/arabic</item>
+    </string-array>
+
+    <!-- Don't translate this string -->
+    <string name="en">en</string>
+    <string name="ar">ar</string>
+
+    <string-array name="language_key_array">
+        <item>@string/en</item>
+        <item>@string/ar</item>
+    </string-array>
+
+</resources>

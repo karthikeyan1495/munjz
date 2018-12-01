@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="san_francisco_text_bold">SanFranciscoTextBold</string>
+    <string name="San_francisco_text_light">SanFranciscoTextLight</string>
+    <string name="san_francisco_text_medium">SanFranciscoTextMedium</string>
+    <string name="san_francisco_text_regular">SanFranciscoTextRegular</string>
+    <string name="san_francisco_text_heavy">SanFranciscoTextHeavy</string>
+    <string name="san_francisco_text_semibold">SanFranciscoTextSemibold</string>
+
+    <string name="pacifico">Pacifico</string>
+
+
+    <string-array name="font_file_name">
+        <item>SanFranciscoText_Bold.ttf</item>
+        <item>SanFranciscoText_Light.ttf</item>
+        <item>SanFranciscoText_Medium.ttf</item>
+        <item>SanFranciscoText_Regular.ttf</item>
+        <item>SanFranciscoText_Heavy.otf</item>
+        <item>SanFranciscoText_Semibold.otf</item>
+        <item>Pacifico.ttf</item>
+    </string-array>
+
+    <string-array name="font_alies_name">
+        <item>@string/san_francisco_text_bold</item>
+        <item>@string/San_francisco_text_light</item>
+        <item>@string/san_francisco_text_medium</item>
+        <item>@string/san_francisco_text_regular</item>
+        <item>@string/san_francisco_text_heavy</item>
+        <item>@string/san_francisco_text_semibold</item>
+        <item>@string/pacifico</item>
+    </string-array>
+
+</resources>

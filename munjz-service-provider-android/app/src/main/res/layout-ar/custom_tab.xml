@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="customTabVM"
+            type="com.munjzservice.tab.viewmodel.CustomTabVM">
+        </variable>
+        <variable
+            name="tabInfo"
+            type="com.munjzservice.tab.model.TabInfo"></variable>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_marginLeft="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:id="@+id/title"
+                android:textSize="13sp"
+                android:text="@{tabInfo.name}"/>
+            <TextView
+                android:layout_marginLeft="3dp"
+                android:minHeight="20dp"
+                android:minWidth="20dp"
+                android:text="@{tabInfo.count}"
+                android:gravity="center"
+                android:textSize="13sp"
+                android:maxLength="3"
+                android:ellipsize="end"
+                android:textColor="@color/font_color2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/tab_bubble_bg"/>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

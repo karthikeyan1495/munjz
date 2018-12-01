@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1688c5</color>
+    <color name="colorPrimaryDark">#1688c5</color>
+    <color name="colorAccent">#FFFFFF</color>
+
+    <color name="white">#FFFFFF</color>
+
+
+    <color name="background">#DFDFDF</color>
+
+    <color name="line">#DFDFDF</color>
+
+    <color name="font_color1">#333333</color>
+    <color name="font_color2">#1688c5</color>
+    <color name="font_color3">#555555</color>
+    <color name="font_color4">#666666</color>
+
+    <color name="notification_bg">#00c4ef</color>
+
+
+    <color name="card_bottom_bar_color">#FAFAFA</color>
+
+</resources>
